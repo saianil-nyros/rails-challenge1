@@ -1,0 +1,31 @@
+<% dishes.each_slice(2) do |items| %>
+ <div class="row">
+   <% items.each do |dish| %>
+    <div class="col-lg-6 mt-3 ">
+       <div class="hidd">
+       		 <%= link_to(image_tag(dish.image.url(:original),class: " imagegrid_search"), dish_path(dish)) %>
+       	</div>
+        <h1 class="dish_name_text">
+          <%= dish.name%>
+        </h1>
+          <%= dish.restaurants.find_each do |restaurant| %>
+          <h4 class="restaurent_name">
+          <%= link_to restaurant.name, restaurant_path(restaurant), class: "restaurant_text" %>
+          </h4>
+            <span class="price"><i class="fa fa-dollar"></i>
+              <%= dish.price %></span>
+           <span class="rating_count">
+           	<%= image_tag('logos/heart.png')%>
+            <span><%= dish.rating %></span>
+            <h1 class="user_vote">1 vote</h1>
+           </span>
+          <div class="location">
+            <div>
+                <p><span><%= image_tag("logos/location.png",:class=>"locimage")%> </span><%= restaurant.location.location %></p>
+              </div>
+            </div>
+         <% end %>
+      </div>
+     <% end %>
+  </div>
+<% end %>

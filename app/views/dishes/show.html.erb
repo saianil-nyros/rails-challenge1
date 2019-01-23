@@ -1,0 +1,22 @@
+<div class="container-fluid ">
+<div class="row rowcenter showpage">
+   <div class="col-md-4  mt-5">
+   <%= image_tag @dish.image.url(:medium), :class=>"show_image_logo mt-5" %>
+     <strong class="showpage_dish_name" ><%= @dish.name %>
+       <p class=" showpage_dish_price  text-center">Price :<%= @dish.price %></p>
+     </strong>
+
+      
+    
+     <%= @dish.restaurants.find_each do |restaurant| %>
+     <div>
+        <%= link_to restaurant.name, restaurant_path(restaurant), class: "showpage_res_text text-center mb-5" %> 
+      </div>
+      
+     <% end %>
+    </div>
+   <div class="col-md-8 mt-5 hidd">
+     <%= image_tag @dish.image.url(:original), :class=>"image_show_page" %>
+   </div>
+ </div>
+</div>

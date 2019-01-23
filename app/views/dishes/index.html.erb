@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <%= image_tag("logos/landingimage.png",class: 'img-responsive landingimage')%>
+</div>
+	<div class="centered">
+			<h1>What do you <em>really</em> feel like ?</h1>
+	</div>
+  <div class="searchcenter">
+    <%= form_tag(search_path,method: :get ,enforce_utf8: false) do %>
+        <%= text_field_tag :name,  nil,class: "landing_text",:placeholder =>'Chips and burgers' %>
+        <span><%= image_tag('logos/search.png')%><%= submit_tag 'SEARCH', class: "search_btn",:name=>nil%></span>
+      <% end %>
+  </div>
+ 	<div class="center">
+ 		<h4 class="textincenter">TOP RATED DISHES</h4>
+ 	</div>
+ <div class="container">
+  <% @dishes.each_slice(3) do |dishitems| %>
+    <div class="row grid">
+    <% dishitems.each do |dish|%>
+      <div class="col-lg-4">
+        <div>
+          <div class="hidd">
+              <%= link_to(image_tag(dish.image.url(:original),class: "imagegrid"), dish_path(dish)) %>
+          </div>
+          <h3 class="dish_name_text">
+            <%= dish.name%></h3>
+            <%= dish.restaurants.find_each do |restaurant| %>
+          <h4 class="restaurent_name">
+            <%= link_to restaurant.name, restaurants_path(restaurant),class: "restaurant_text" %></h4>
+            <span class="price"><i class="fa fa-dollar"></i>
+              <%= dish.price %></span>
+            <span class="rating_count">
+            <%= image_tag('logos/heart.png',:class=>"heartlogo")%>
+            <%= dish.rating %>
+              <h1 class="user_vote">1 vote</h1>
+            </span>
+            <div class="location">
+            <div>
+              <p class="loctext"><span><%= image_tag("logos/location.png",:class=>"locimage")%>
+                </span><%=restaurant.location.location%></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+  </div>
+    <div class="center" id="show_more">
+      <%= link_to "SEE MORE FOOD",dishes_path,method: :get, class: "loadmore",remote: true %>
+    </div>
+    <div class="container-fluid footer">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="footertext">
+        <p class="mt-5">Do more with the app.Download it today!</p>
+      <%= image_tag("logos/googleplay.png",class: 'img-responsive image mb-5') %>
+      <%= image_tag("logos/appstore.png",  class: 'img-responsive image mb-5') %>  
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <%= image_tag("logos/phone.png",class: 'footer_img') %>
+        </div>
+      </div>
+    </div>

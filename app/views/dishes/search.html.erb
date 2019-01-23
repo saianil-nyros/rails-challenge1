@@ -1,0 +1,77 @@
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-6 mt-5">
+ <div class="row mt-5">
+   <div class="col-md-4">
+     <div class="row">
+       <div class="col-md-4">
+         <p class="filter_name_text">FILTER</p>
+       </div>
+       <div class="col-md-8">
+          <%= select_tag :filter, options_for_select([["RATING","rating"],["PRICE","price"]]), {prompt: 'SORTBY', :name => "products_per_page", :class=>"form-control select_box1 ", id:"filter_sort", remote: true} %>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-4">
+      <%= select_tag :rating_filter, options_for_select([["3+",3],["4+",4],["5+",5]]),{prompt: 'ALL RATINGS', :name => "products_per_page", id:"rating_filter", :class=>"form-control select_box1",remote: true} %>
+    </div>
+   <div class="col-md-4">
+      <div class="dropdown  w-25 select_box3">
+          <div class="btn-light-outline dropdown-toggle dp_select" type="button" data-toggle="dropdown"><small id="check_boxid">ALL DIETARY REQUIREMENTS</small>
+            <span class="caret"></span>
+      </div>
+        <div class="dropdown-menu">
+            <div class="check_box_list select_box3">
+              <%= @taggings.find_each do |tagging| %>
+                <div class="check_box">
+                  <%= check_box tagging.id,nil,:class=> "tag",:id=>tagging.id,:name=>tagging.name %>
+                  <span class="tag_name"><%=tagging.name%></span>
+                </div>
+                <% end %>
+              </div>
+          </div>
+      </div>
+   </div>
+   </div>
+    <div class="row">
+           <div class="col-md-2">
+            <p class="filter_name_text"><%=@dishes_search.count%>RESULTS</p>
+           </div><span id="min"></span>
+           <div class="col-md-4 mt-2">
+          <div id="the_slider" class="range">
+          </div>
+      </div><span id="max"></span>
+         </div>
+        <div class="row">
+           <div class="container search_page_image">
+            <% if @dishes_search.count > 0 %>
+              <%= render 'dishes/list', dishes: @dishes_search %>
+            <% else %>
+            <p class="text-center">No result found</p>
+              <% end %>
+           </div>
+         </div>
+       </div>
+       <div class="col-md-6 divmap"  id= "mapimage">
+ 
+        </div>
+     </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+ <div class="container-fluid navigation">
+ 	
+ <nav class="navbar navbar-inverse navbar-fixed-top  ">
+	<%= image_tag("logos/peppa.png",width:'150px',height:'45px',class: ' image navlogo')%>
+	<div class="dropdown nav_select_location">
+	  <button class="btn btn-light dropdown-toggle select_text" type="" data-toggle="dropdown"><span class="select_text">SELECT LOCATION</span>
+	  <span class="caret"></span></button>
+	  <ul class="dropdown-menu">
+	    
+	    <span><%= text_field_tag :login_aei %><%= image_tag("logos/search.png",:class=>"image")%></span>
+	  </ul>
+	</div>
+	<div class="search">
+	<span class="search">SEARCH</span>
+	<span class="contact">CONTACTUS</span>
+	</div>
+</nav>
+ </div>
+ 
+
+
