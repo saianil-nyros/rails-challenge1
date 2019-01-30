@@ -13,5 +13,15 @@ RSpec.describe DishesController, type: :controller do
 		expect(response.status).to render_template(:search)
 		expect(response.status).to eq(200)
 	end
+	it  "Range slider" do
+	    get :search
+	    expect(response.status).to render_template(:search)
+	    expect(response.status).to eq(200)
+  end
+  it "Dish rating" do
+	    get :search
+	    expect(response.status).to render_template(:search)
+	    expect(response.status).to eq(200)
+  end
 	
 end
